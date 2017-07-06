@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN" xml:lang="zh-CN">
+<head>
+<title>Grade</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script src="http://p1.cdn.pengpengla.com/h5lib/1.0.2/js/seed.js"></script>
+</head>
+<body>
+<div id="scene1">
+    <div id="logo1">
+    	<img src="images/logo1.png" class="logo1">
+    </div>
+    <div id="sbtn1">
+    	<img src="images/start1.png" class="start1">
+    </div>
+</div>
+
+<div id="scene2">
+	<div id="timer"></div>
+	<div id="math"></div>
+	<div id="rightbtn">
+        <img src="images/right2.png" onclick="submit(true)">
+  </div>
+	<div id="wrongbtn">
+        <img src="images/wrong2.png" onclick="submit(false)">
+  </div>
+
+</div>
+
+<div id="scene3">
+	<div id="bg3"></div>
+	<div id="slogen">
+		<p id="level"></p>
+		<p id="warning"></p>
+	</div>
+	<div id="record">
+      <span id="recordNew"></span>
+      <span id="recordBest"></span>
+  </div>
+	<div id="btn3">
+		<img src="images/relive.png" id="start3">
+		<img src="images/exit3.png" id="share3">
+	</div>
+</div>
+<script src="js/TweenMax.min.js"></script>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var sbtn1 = document.getElementById('sbtn1');
+    var sbtn3 = document.getElementById('start3');
+    var backbtn3 = document.getElementById('share3');
+    sbtn1.onclick = function(){
+    	TweenMax.to(scene1, .5, {left:"-100%"});
+    	TweenMax.to(scene2, .5, {left:0});
+      timeout(time);
+    }
+    sbtn3.onclick = function(){
+      if (sofar>23) {
+        start();
+        clearTimeout(t);
+        t=null;
+        clearTimeout(t1);
+        t1=null;
+        timeout(time);
+        TweenMax.to(scene3, 0, {left:"100%"});
+        TweenMax.to(scene2, 0, {left:0});
+      }
+      else{
+        alert("对不起，只有大学生才能复活^_^");
+      }
+    }
+    backbtn3.onclick = function(){
+        myrefresh();
+    }
+    function myrefresh(){ 
+        // window.location.reload(); 
+        TweenMax.to(scene3, 0, {left:"100%"});
+        TweenMax.to(scene2, 0, {left:"100%"});
+        TweenMax.to(scene1, 0, {left:0});
+        clearTimeout(t);
+        t=null;
+        clearTimeout(t1);
+        t1=null;
+        sofar = 0;
+        start();
+    } 
+</script>
+
+<script>
+ var time = 3000;
+ var c = 3;
+ var t,t1;
+ var ror1 = true;
+ var sofar = 0;
+ var best = 0;
+    start();
+    function start(){
+        var num1 = Math.floor(Math.random()*10);
+        var num2 = Math.floor(Math.random()*10);
+        var type = Math.floor(Math.random()*3+1);
+        var result;
+        var num;
+        var op;
+        switch (type){
+         case 0:
+                 op="+";
+                 result=num1+num2;
+             break;
+         case 1:
+                 op="-"
+                 result=num1-num2;
+             break;
+         case 2:
+                 op="X"
+                 result=num1*num2;
+             break;
+         case 3:
+                 op="/"
+                 if(num2==0)
+                   num2++;
+                 result=num1/num2;
+             break;
+
+          }
+        var ror =  Math.floor(Math.random()*2);
+        if (ror==0) {
+            ror1=false;
+            var num3 = Math.floor(Math.random()*5+1);
+            num=result + num3;
+            $("#math").html("<b>"+num1+op+num2+"="+num+ "</b>");
+        }
+        else{
+            ror1=true;
+            num = result;
+            $("#math").html("<b>"+num1+op+num2+"="+num+ "</b>");
+        }
+    };
+
+    function timedCount(){
+        $('#timer').html("<b class="+"timerStyle"+">"+c+"</b>");
+        c--;
+        t1=setTimeout("timedCount()",1000)
+    }
+
+    function timeout(time){
+      c=3;
+      timedCount();
+      t=setTimeout("gameover()",time);
+    }
+    function submit(type){
+        if (type==ror1) {
+            sofar=sofar+1;
+            start();
+            clearTimeout(t);
+            t=null;
+            clearTimeout(t1);
+            t1=null;
+            timeout(time);
+        }else{
+            gameover();
+        };
+    }
+    function gameover(){
+        if (best<sofar) {
+          best = sofar;
+        }
+        TweenMax.to(scene2, .5, {left:"-100%"});
+        TweenMax.to(scene3, .5, {left:0});
+        if (sofar<8) {
+            $("#level").html("小学生");
+            $("#warning").html("妈妈来收手机了");
+            $("#recordNew").html("New:"+sofar);
+            $("#recordBest").html("Best:"+best);
+        }
+        else if(sofar<16){
+            $("#level").html("初中生");
+            $("#warning").html("别扣手机了作业做完了吗");
+            $("#recordNew").html("New:"+sofar);
+            $("#recordBest").html("Best:"+best);
+        }
+        else if (sofar<24) {
+            $("#level").html("高中生");
+            $("#warning").html("再玩考不上大学了");
+            $("#recordNew").html("New:"+sofar);
+            $("#recordBest").html("Best:"+best);
+        }
+        else{
+          if (sofar>28) {
+            $("#level").html("大学生");
+            $("#warning").html("别以为我不知道，这分是刷出来的吧");
+            $("#recordNew").html("New:"+sofar);
+            $("#recordBest").html("Best:"+best);
+          }
+          else{
+            $("#level").html("大学生");
+            $("#warning").html("别扣手机了工作找到了吗");
+            $("#recordNew").html("New:"+sofar);
+            $("#recordBest").html("Best:"+best);
+          }
+            
+        };
+    }
+</script>
+</body>
+</html>
+

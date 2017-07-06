@@ -1,0 +1,186 @@
+body{
+	/*background-color: #2f7575;*/
+	background-image: url(images/bg.jpg);
+	font-family: '微软雅黑';
+	width: 960px;
+	height: 1000px;
+	margin: 30px auto;
+}
+h2,h5{
+	margin: 0px;
+}
+main{
+	width: 960px;
+	background-color: #fff;
+	position: relative;
+}
+main article{
+	padding: 50px;
+	margin-right: 300px;
+}
+main .resume{
+	margin-bottom: 110px;
+}
+main .describe{
+	font-size: 0.8em;
+	color: #378a94;
+	margin: 0;
+	margin-bottom: 5px;
+}
+main .name{
+	font-size: 2em;
+	margin: 0;
+	margin-bottom: 50px;
+}
+main .fa::before{
+	content: "\2611";
+	color: #378a94;
+	margin-right: 5px; 
+}
+main .detail{
+	margin-top: 5px;
+	border-top: 2px solid #378a94;
+	margin-bottom: 40px;
+}
+main .time{
+	width: 120px;
+	float: left;
+	line-height: 1.5;
+}
+main .event{
+	overflow: hidden;
+	list-style: none;
+	padding-left: 0;
+	line-height: 1.5;
+}
+main .piece{
+	overflow: hidden;
+}
+aside{
+	width: 300px;
+	background-color: #000;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+aside img{
+	width: 200px;
+	margin: 50px;
+	background-size: cover;
+}
+aside .education{
+	color: white;
+	margin-bottom: 50px;
+}
+aside .education h2{
+	margin: 0 auto;
+	padding: 10px 0px;
+	background-color: #378a94;
+}
+aside .education h2::before{
+	content: "\2611";
+	color: white;
+	margin: 15px;
+}
+aside .education ul{
+	list-style: none;
+	line-height: 1.5;
+	padding:0px 50px;
+}
+aside .education ul li{
+
+}
+aside .education .major{
+	color: #777;
+	margin-top: 10px; 
+	margin-bottom: 20px;
+}
+aside .tech ul, aside .exp ul{
+	list-style: circle;
+}
+aside .skill ul{
+	color: #ccc;
+}
+aside .basic{
+	height: 8px;
+	width: 50px;
+	background-color: white;
+	border-left: 150px solid #378a94;
+	margin: 5px 0 20px 0;
+}
+aside .fe{
+	width: 30px;
+	border-left: 170px solid #378a94;
+}
+aside .host{
+	width: 30px;
+	border-left: 170px solid #378a94;
+}
+aside .volunteer{
+	width: 60;
+	border-left: 140px solid #378a94;
+}
+@media screen and (max-width: 980px){
+	body{
+		width: 100%;
+		position: relative;
+		margin-top: 0;
+	}
+	main{
+    	width: 100%;
+    	background-color: #fff;
+    }
+    main article{
+    	position: absolute;
+    	top: 380px;
+    	width: 100%-100px;
+    	margin-right: 0;
+    	background-color: #fff;
+    }
+    main aside{
+    	position: absolute;
+    	top: 0;
+    	width: 100%;
+    	background-color: #000;
+    }
+    aside img{
+    	display: block;
+    	width: 200px;
+    	background-size: cover;
+    	flex-shrink: 1;
+    }
+	aside{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	    height: 380px;
+    }
+    aside .education{
+    	flex-shrink: 0;
+    	margin-bottom: 0;
+    }
+    aside .education h2{
+	    background-color: transparent;
+    }
+    aside .skill, aside .exp{
+    	display: none;
+    }
+}
+@media screen and (max-width: 480px){
+	aside{
+		height: 670px;
+		flex-direction: column;
+	}
+	aside .education{
+		border-top: 1px dotted white;
+		padding-top: 20px;
+	}
+	aside .skill,aside .tech,aside .exp{
+		display: none;
+	}
+	main article{
+		top: 670px;
+	}
+
+}

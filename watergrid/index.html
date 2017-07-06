@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WATER GRID</title>    
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <div class="days-hours-heatmap">
+      <!-- calibration and render type controller -->
+      <div class="calibration" role="calibration">
+        <div class="group" role="example">
+          <svg width="120" height="17">
+          </svg>
+          <div role="description" class="description">
+            <label>用水少</label>
+            <label>用水多</label>
+          </div>        
+        </div>
+        <div role="toggleDisplay" class="display-control">
+          <div>
+            <input type="radio" name="displayType" checked/>
+            <label>每天小时用水量</label>
+          </div>
+          <div>
+            <input type="radio" name="displayType"/>
+            <label>预测偏差值</label>
+          </div>
+        </div>
+      </div>
+      <!-- heatmap -->
+      <svg role="heatmap" class="heatmap"></svg>
+
+      <!-- Bar Chart -->
+      <svg role="barchart" class="barchart"></svg>
+
+      <!-- Line Chart -->
+      <svg role="linechart" class="linechart"></svg>
+    </div>
+    
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

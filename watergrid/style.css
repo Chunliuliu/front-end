@@ -1,0 +1,79 @@
+body{
+	font-family:arial, 'Hiragino Sans GB',Tahoma, Arial, Helvetica, STHeiti;font-size: 12px;
+}
+.days-hours-heatmap{
+	padding: 20px 0 20px 0;
+	width: 500px;
+	margin: 0 auto;
+}
+.days-hours-heatmap .calibration{
+	margin-bottom: 15px;
+	width:400px;
+}
+.days-hours-heatmap .calibration .group{
+	display: inline-block;
+}
+.days-hours-heatmap .calibration .description{
+	width:108px;
+}
+.days-hours-heatmap .calibration .description>label:last-child{
+	float:right;
+}
+.days-hours-heatmap .calibration>.display-control{
+	float:right;
+}
+.days-hours-heatmap .calibration>.display-control label{
+	vertical-align: top;
+}
+.days-hours-heatmap .calibration>.display-control input[type='radio']{
+	cursor: pointer;
+}
+.days-hours-heatmap .heatmap{
+	position: relative;
+}
+.days-hours-heatmap .heatmap .highlight{
+	position: absolute;
+}
+.days-hours-heatmap .heatmap g rect:hover{
+	fill: #01272d;
+}
+.days-hours-heatmap .heatmap .axis path,.days-hours-heatmap .barchart .axis path,
+.days-hours-heatmap .linechart .axis path{
+	display: none;
+}
+/*.days-hours-heatmap .barchart .y path,.days-hours-heatmap .linechart .y path{
+	display: block;
+}*/
+.days-hours-heatmap .heatmap .axis line,.days-hours-heatmap .barchart .axis line,
+.days-hours-heatmap .linechart .axis line{
+	fill: none;stroke: #000;shape-rendering: crispEdges;
+}
+.days-hours-heatmap .heatmap .axis text,.days-hours-heatmap .barchart .axis text,
+.days-hours-heatmap .linechart .axis text{
+	font-size: 12px;
+}
+.days-hours-heatmap .barchart .text{
+	font-size: 10px;
+}
+.days-hours-heatmap .linechart .text{
+	opacity: 0;
+	background-color: #fff;
+}
+.days-hours-heatmap .barchart .text:hover{
+	font-size: 20px;
+	transform: translate(0,-10px);
+	cursor: pointer;
+}
+.days-hours-heatmap .linechart .text:hover{
+	opacity: 1;
+	font-size: 20px;
+	cursor: pointer;
+}
+/*.days-hours-heatmap .barchart .texthighlight{
+	font-size: 20px;
+	transform: translate(0,-10px);
+	cursor: pointer;
+}*/
+.bar2 {
+  fill: steelblue;
+}
