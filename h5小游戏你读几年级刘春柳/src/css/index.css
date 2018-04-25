@@ -59,10 +59,11 @@ body{
 	margin-right: 1em;
 }
 .timerStyle{
-	padding-left: 0.6em;
-	padding-right: 0.6em;
-	padding-top: 0.2em;
-	padding-bottom: 0.2em;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
 	border: 1px solid white;
 	border-radius: 5em;
 }
